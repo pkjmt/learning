@@ -1,0 +1,78 @@
+---
+- hosts: localhost
+  collections: 
+  - netapp.ontap
+  gather_facts: false
+  tasks:
+  - name: Gather ontap_system_version
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "ontap_system_version"
+    register: ontap_info
+  - name: Gather cluster_node_info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "cluster_node_info"
+    register: ontap_info
+  - name: Gather service_processor_info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "service_processor_info"
+    register: ontap_info
+  - name: Gather service_processor_network_info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "service_processor_network_info"
+    register: ontap_info
+  - name: Gather vserver_info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "vserver_info"
+    register: ontap_info
+  - name: Gather security_login_account_info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "security_login_account_info"
+    register: ontap_info
+  - name: Gather security_login_role_config_info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "security_login_role_config_info"
+    register: ontap_info
+  - name: Gather security_login_role_info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "security_login_role_info"
+    register: ontap_info

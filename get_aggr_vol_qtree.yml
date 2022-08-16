@@ -1,0 +1,33 @@
+---
+- hosts: localhost
+  collections: 
+  - netapp.ontap
+  gather_facts: false
+  tasks:
+  - name: Gather Aggregate Info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "aggregate_info"
+    register: ontap_info
+  - name: Gather Volume Info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "volume_info"
+    register: ontap_info
+  - name: Gather qtree Info
+    na_ontap_info:
+      https: true
+      validate_certs: false
+      hostname: "{{ hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: "qtree_info"
+    register: ontap_info
